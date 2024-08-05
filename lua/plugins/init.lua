@@ -1,7 +1,7 @@
 return {
   {
     "stevearc/conform.nvim",
-    event = {'BufWritePre', 'BufNewFile' }, -- uncomment for format on save
+    event = { 'BufWritePre', 'BufNewFile' }, -- uncomment for format on save
     opts = require "configs.conform",
   },
 
@@ -12,8 +12,17 @@ return {
       require "configs.lspconfig"
     end,
   },
-
-  -- {
+  {
+    'goolord/alpha-nvim',
+    lazy = false,
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+      'nvim-lua/plenary.nvim'
+    },
+    config = function()
+      require 'alpha'.setup(require 'alpha.themes.theta'.config)
+    end
+  }
   -- 	"nvim-treesitter/nvim-treesitter",
   -- 	opts = {
   -- 		ensure_installed = {
