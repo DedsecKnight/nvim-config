@@ -34,6 +34,16 @@ dofile(vim.g.base46_cache .. "statusline")
 
 require "nvchad.autocmds"
 
+local autocmd = vim.api.nvim_create_autocmd
+
+autocmd("VimEnter", {
+  command = ":silent !kitty @ set-spacing padding=0",
+})
+
+autocmd("VimLeavePre", {
+  command = ":silent !kitty @ set-spacing padding=10",
+})
+
 vim.schedule(function()
   require "mappings"
 end)
