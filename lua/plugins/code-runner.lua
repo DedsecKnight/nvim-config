@@ -3,7 +3,7 @@ return {
     "CRAG666/code_runner.nvim",
     lazy = false,
     config = function()
-      require('code_runner').setup({
+      require("code_runner").setup({
         mode = "term",
         hot_reload = true,
         term = {
@@ -20,16 +20,16 @@ return {
             "cd $dir &&",
             "g++ -std=c++20 -Wshadow -Wall $fileName -DLLOCAL -fsanitize=address -fsanitize=undefined -g -o",
             "$fileNameWithoutExt &&",
-            "$dir/$fileNameWithoutExt"
+            "$dir/$fileNameWithoutExt",
           },
           java = {
             "cd $dir &&",
             "javac $fileName &&",
             "java $fileNameWithoutExt",
           },
-          go = "go run"
-        }
+          go = "go run",
+        },
       })
-    end
-  }
+    end,
+  },
 }
