@@ -9,3 +9,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
 vim.api.nvim_create_autocmd("VimLeavePre", {
   command = ":silent !kitty @ set-spacing padding=10",
 })
+
+vim.api.nvim_create_autocmd({ "VimEnter", "BufNewFile", "BufReadPost" }, {
+  command = ":silent! call HardMode()",
+})
