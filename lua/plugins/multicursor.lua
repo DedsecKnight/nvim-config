@@ -8,7 +8,7 @@ return {
     }
   end,
   config = function()
-    vim.keymap.set("n", "<C-d>", "<Plug>(VM-Find-Under)")
-    vim.keymap.set("v", "<C-d>", "<Plug>(VM-Find-Subword-Under)")
+    vim.keymap.set("n", "<leader>d", "<Plug>(VM-Find-Under)")
+    vim.keymap.set("v", "<leader>d", "<Plug>(VM-Find-Subword-Under)")
   end,
 }
