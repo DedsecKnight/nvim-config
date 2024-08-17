@@ -5,7 +5,8 @@ local theme_rice_lookup = {
   daniela = "catppuccin",
   cynthia = "kanagawa-dragon",
   silvia = "gruvbox",
-  melissa = "nord",
+  melissa = "onenord",
+  isabel = "onedark",
 }
 
 local get_rice_themename = function()
@@ -25,14 +26,15 @@ return {
   { "rose-pine/neovim", name = "rose-pine" },
   { "ellisonleao/gruvbox.nvim" },
   { "rebelot/kanagawa.nvim" },
-  { "nordtheme/vim" },
-  -- {
-  --   "AlexvZyl/nordic.nvim",
-  --   priority = 1000,
-  --   config = function()
-  --     require("nordic").load()
-  --   end,
-  -- },
+  { "rmehri01/onenord.nvim" },
+  {
+    "navarasu/onedark.nvim",
+    config = function()
+      require("onedark").setup({
+        style = "darker",
+      })
+    end,
+  },
   {
     "sainnhe/everforest",
     priority = 1000,
