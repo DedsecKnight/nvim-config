@@ -13,7 +13,7 @@ return {
         },
         lualine_c = {
           function()
-            return vim.uv.cwd()
+            return string.sub(vim.uv.cwd() or ' ', 2)
           end,
           {
             'diagnostics',
