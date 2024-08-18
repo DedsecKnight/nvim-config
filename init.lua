@@ -108,7 +108,7 @@ vim.api.nvim_create_autocmd('VimEnter', {
   command = ':silent !kitty @ set-spacing padding=0',
 })
 
-vim.api.nvim_create_autocmd('VimLeavePre', {
+vim.api.nvim_create_autocmd('VimLeave', {
   command = ':silent !kitty @ set-spacing padding=10',
 })
 
