@@ -486,26 +486,7 @@ require('lazy').setup({
       require('mini.surround').setup()
     end,
   },
-  {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function()
-      require('lualine').setup {
-        options = {
-          disabled_filtypes = { statusline = { 'dashboard', 'alpha', 'ministarter' } },
-        },
-        sections = {
-          lualine_z = {
-            { 'location', padding = { left = 0, right = 1 } },
-            function()
-              return ' ' .. os.date '%R'
-            end,
-          },
-        },
-        extensions = { 'neo-tree', 'lazy' },
-      }
-    end,
-  },
+  require 'kickstart.plugins.lualine',
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
