@@ -10,6 +10,9 @@ return {
     config = function()
       require('onedark').setup {
         style = 'darker',
+        lualine = {
+          transparent = true,
+        },
       }
     end,
   },
