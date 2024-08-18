@@ -112,6 +112,10 @@ vim.api.nvim_create_autocmd('VimLeave', {
   command = ':silent !kitty @ set-spacing padding=10',
 })
 
+vim.api.nvim_create_autocmd({ 'VimEnter', 'BufNewFile', 'BufReadPost' }, {
+  command = ':silent! call HardMode()',
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.uv.fs_stat(lazypath) then
