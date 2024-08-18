@@ -7,6 +7,10 @@ return {
         disabled_filtypes = { statusline = { 'dashboard', 'alpha', 'ministarter' } },
       },
       sections = {
+        lualine_b = {
+          'branch',
+          'diff',
+        },
         lualine_c = {
           function()
             return vim.uv.cwd()
