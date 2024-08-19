@@ -223,31 +223,6 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
-      local default_theme = 'tokyonight'
-      local theme_rice_lookup = {
-        cristina = 'rose-pine-moon',
-        brenda = 'everforest',
-        daniela = 'catppuccin',
-        cynthia = 'kanagawa-dragon',
-        silvia = 'gruvbox',
-        melissa = 'onenord',
-        isabel = 'onedark',
-      }
-
-      local get_rice_themename = function()
-        local file = io.open(os.getenv 'HOME' .. '/.config/bspwm/.rice', 'rb')
-        if not file then
-          return default_theme
-        end
-        local rice_name = file:read()
-        file:close()
-        if theme_rice_lookup[rice_name] ~= nil then
-          return theme_rice_lookup[rice_name]
-        end
-        return default_theme
-      end
-      local themename = get_rice_themename()
-      vim.cmd.colorscheme(themename)
     end,
   },
 
@@ -419,6 +394,8 @@ require('lazy').setup({
       },
     },
     opts = {
+      async = true,
+      lsp_fallback = true,
       notify_on_error = false,
       format_on_save = function(bufnr)
         local disable_filetypes = { c = true, cpp = true }
