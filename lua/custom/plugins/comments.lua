@@ -9,6 +9,8 @@ return {
       }
       vim.keymap.set('v', '<C-_>', 'gc', { desc = 'Comment', remap = true })
       vim.keymap.set('n', '<C-_>', 'gcc', { desc = 'Comment', remap = true })
+      vim.keymap.set('v', '<C-/>', 'gc', { desc = 'Comment', remap = true })
+      vim.keymap.set('n', '<C-/>', 'gcc', { desc = 'Comment', remap = true })
     end,
   },
 }
