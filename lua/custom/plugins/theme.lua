@@ -5,6 +5,7 @@ return {
   { 'ellisonleao/gruvbox.nvim' },
   { 'rebelot/kanagawa.nvim' },
   { 'rmehri01/onenord.nvim' },
+  { 'nyoom-engineering/oxocarbon.nvim' },
   {
     'navarasu/onedark.nvim',
     config = function()

@@ -7,6 +7,7 @@ local theme_rice_lookup = {
   silvia = 'gruvbox',
   melissa = 'onenord',
   isabel = 'onedark',
+  yael = 'oxocarbon',
 }
 
 local get_rice_themename = function()
