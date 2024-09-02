@@ -3,7 +3,7 @@ local theme_rice_lookup = {
   cristina = 'rose-pine-moon',
   brenda = 'everforest',
   daniela = 'catppuccin',
-  cynthia = 'kanagawa-dragon',
+  cynthia = 'kanagawa-wave',
   silvia = 'gruvbox',
   melissa = 'onenord',
   isabel = 'onedark',
@@ -97,5 +97,11 @@ return {
       --   If not available, we use `mini` as the fallback
       'rcarriga/nvim-notify',
     },
+  },
+  {
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require('colorizer').setup {}
+    end,
   },
 }
