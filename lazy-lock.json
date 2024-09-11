@@ -8,6 +8,7 @@
   "code_runner.nvim": { "branch": "main", "commit": "6c5bfe44a6c7523350cd706e6b3b8101166eed99" },
   "conform.nvim": { "branch": "master", "commit": "d31323db3fa4a33d203dcb05150d98bd0153c42c" },
   "dactl.nvim": { "branch": "main", "commit": "ed5d678bdcf294b0b42391165d94efa5b5496a72" },
+  "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "everforest": { "branch": "master", "commit": "b49ba81e79b20d2b47bb71e98fa984bae90731be" },
   "fidget.nvim": { "branch": "main", "commit": "d855eed8a06531a7e8fd0684889b2943f373c469" },
   "git-conflict.nvim": { "branch": "main", "commit": "bfd9fe6fba9a161fc199771d85996236a0d0faad" },
