@@ -8,6 +8,9 @@ local theme_rice_lookup = {
   melissa = 'onenord',
   isabel = 'onedark',
   yael = 'oxocarbon',
+  aline = 'rose-pine-dawn',
+  andrea = 'rose-pine-dawn',
+  pamela = 'monokai-pro-spectrum',
 }
 
 local get_rice_themename = function()
@@ -54,7 +57,7 @@ return {
               text_align = 'left',
             },
           },
-          separator_style = 'slant',
+          separator_style = 'thin',
         },
       }
       load_colorscheme()
@@ -102,6 +105,14 @@ return {
     'norcalli/nvim-colorizer.lua',
     config = function()
       require('colorizer').setup {}
+    end,
+  },
+  {
+    'rcarriga/nvim-notify',
+    config = function()
+      require('notify').setup {
+        background_colour = '#000000',
+      }
     end,
   },
 }

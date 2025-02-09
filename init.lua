@@ -359,6 +359,7 @@ require('lazy').setup({
             '--enable-config',
             '--pch-storage=disk',
             '--header-insertion-decorators',
+            '--compile-commands-dir=build/Release',
           },
         },
         gopls = {
@@ -366,11 +367,9 @@ require('lazy').setup({
           filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
           root_dir = require('lspconfig/util').root_pattern('go.work', 'go.mod', '.git'),
         },
-        pyright = {},
         rust_analyzer = {},
         html = {},
         emmet_ls = {},
-        tsserver = {},
         lua_ls = {
           settings = {
             Lua = {
@@ -423,7 +422,7 @@ require('lazy').setup({
       format_on_save = function(bufnr)
         local disable_filetypes = { c = true, cpp = true }
         return {
-          timeout_ms = 500,
+          timeout_ms = 1000,
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
         }
       end,
@@ -432,10 +431,12 @@ require('lazy').setup({
         css = { 'prettier' },
         html = { 'prettier' },
         typescriptreact = { 'prettier' },
+        -- javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
         cpp = { 'clang-format' },
         go = { 'gofumpt' },
         python = { 'isort', 'black' },
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
+        svelte = { 'prettier' },
       },
     },
   },

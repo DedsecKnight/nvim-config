@@ -5,7 +5,6 @@ return {
     config = function()
       require('code_runner').setup {
         mode = 'term',
-        hot_reload = true,
         term = {
           position = 'bot',
           size = 16,
