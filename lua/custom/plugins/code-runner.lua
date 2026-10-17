@@ -17,7 +17,7 @@ return {
           python = 'python3 -u',
           cpp = {
             'cd $dir &&',
-            'g++ -std=c++20 -Wshadow -Wall $fileName -DLLOCAL -fsanitize=address -fsanitize=undefined -g -o',
+            'g++ -std=c++23 -Wshadow -Wall $fileName -DLLOCAL -fsanitize=address -fsanitize=undefined -g -o',
             '$fileNameWithoutExt &&',
             '$dir/$fileNameWithoutExt',
           },

@@ -1,5 +1,16 @@
 return {
-  { 'JoosepAlviste/nvim-ts-context-commentstring' },
+  {
+    'JoosepAlviste/nvim-ts-context-commentstring',
+    main = 'ts_context_commentstring',
+    init = function()
+      -- Skip the deprecated module loading and the legacy CursorHold autocmd
+      -- that errors in buffers without a treesitter parser (e.g. oil://).
+      vim.g.skip_ts_context_commentstring_module = true
+    end,
+    opts = {
+      enable_autocmd = false,
+    },
+  },
   {
     'numToStr/Comment.nvim',
     opts = {},

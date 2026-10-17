@@ -16,6 +16,7 @@ vim.opt.mouse = 'a'
 
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
+vim.opt.fixendofline = false
 
 vim.opt.expandtab = true
 vim.opt.shiftround = true
@@ -101,6 +102,26 @@ vim.keymap.set('v', '<A-k>', ":m '<-2<cr>gv=gv", { desc = 'Move Up' })
 vim.keymap.set('n', '<S-Tab>', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
 vim.keymap.set('n', '<Tab>', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
 vim.keymap.set('n', '<leader>r', '<cmd>RunCode<CR>', { desc = 'Run code' })
+
+vim.lsp.config['ocamllsp'] = {
+  cmd = { 'ocamllsp' },
+  filetypes = {
+    'ocaml',
+    'ocaml.interface',
+    'ocaml.menhir',
+    'ocaml.ocamllex',
+    'dune',
+    'reason',
+  },
+  root_markers = {
+    { 'dune-project', 'dune-workspace' },
+    { '*.opam', 'esy.json', 'package.json' },
+    '.git',
+  },
+  settings = {},
+}
+
+vim.lsp.enable 'ocamllsp'
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
@@ -189,7 +210,6 @@ require('lazy').setup({
   {
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
-    branch = '0.1.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
       {
@@ -314,7 +334,7 @@ require('lazy').setup({
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
-          if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+          if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
             local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
               buffer = event.buf,
@@ -337,7 +357,7 @@ require('lazy').setup({
             })
           end
 
-          if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+          if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
             map('<leader>th', function()
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
             end, '[T]oggle Inlay [H]ints')
@@ -352,6 +372,8 @@ require('lazy').setup({
         clangd = {
           cmd = {
             'clangd',
+            '--query-driver=/usr/bin/c++',
+            '--clang-tidy',
             '--header-insertion=iwyu',
             '--all-scopes-completion=false',
             '--completion-style=bundled',
@@ -359,7 +381,6 @@ require('lazy').setup({
             '--enable-config',
             '--pch-storage=disk',
             '--header-insertion-decorators',
-            '--compile-commands-dir=build/Release',
           },
         },
         gopls = {
@@ -367,7 +388,6 @@ require('lazy').setup({
           filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
           root_dir = require('lspconfig/util').root_pattern('go.work', 'go.mod', '.git'),
         },
-        rust_analyzer = {},
         html = {},
         emmet_ls = {},
         lua_ls = {
@@ -400,7 +420,11 @@ require('lazy').setup({
       }
     end,
   },
-
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^6', -- Recommended
+    lazy = false, -- This plugin is already lazy
+  },
   { -- Autoformat
     'stevearc/conform.nvim',
     event = { 'BufWritePre' },
@@ -437,6 +461,7 @@ require('lazy').setup({
         python = { 'isort', 'black' },
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
         svelte = { 'prettier' },
+        ocaml = { 'ocamlformat' },
       },
     },
   },
@@ -513,7 +538,7 @@ require('lazy').setup({
       -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 
       ---@diagnostic disable-next-line: missing-fields
-      require('nvim-treesitter.configs').setup(opts)
+      require('nvim-treesitter').setup(opts)
     end,
   },
 

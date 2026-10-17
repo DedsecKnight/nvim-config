@@ -1,8 +1,8 @@
-local default_theme = 'tokyonight'
+local default_theme = 'catppuccin-mocha'
 local theme_rice_lookup = {
   cristina = 'rose-pine-moon',
   brenda = 'everforest',
-  daniela = 'catppuccin',
+  daniela = 'catppuccin-mocha',
   cynthia = 'kanagawa-wave',
   silvia = 'gruvbox',
   melissa = 'onenord',
@@ -10,7 +10,7 @@ local theme_rice_lookup = {
   yael = 'oxocarbon',
   aline = 'rose-pine-dawn',
   andrea = 'rose-pine-dawn',
-  pamela = 'monokai-pro-spectrum',
+  pamela = 'monokai-pro-octagon',
 }
 
 local get_rice_themename = function()
@@ -35,6 +35,7 @@ return {
   {
     'akinsho/bufferline.nvim',
     config = function()
+      load_colorscheme()
       require('bufferline').setup {
         options = {
           diagnostics = 'nvim_lsp',
@@ -60,7 +61,7 @@ return {
           separator_style = 'thin',
         },
       }
-      load_colorscheme()
+      -- load_colorscheme()
     end,
   },
   {
@@ -102,7 +103,7 @@ return {
     },
   },
   {
-    'norcalli/nvim-colorizer.lua',
+    'catgoose/nvim-colorizer.lua',
     config = function()
       require('colorizer').setup {}
     end,
@@ -114,5 +115,23 @@ return {
         background_colour = '#000000',
       }
     end,
+  },
+  {
+    'christoomey/vim-tmux-navigator',
+    cmd = {
+      'TmuxNavigateLeft',
+      'TmuxNavigateDown',
+      'TmuxNavigateUp',
+      'TmuxNavigateRight',
+      'TmuxNavigatePrevious',
+      'TmuxNavigatorProcessList',
+    },
+    keys = {
+      { '<c-h>', '<cmd><C-U>TmuxNavigateLeft<cr>' },
+      { '<c-j>', '<cmd><C-U>TmuxNavigateDown<cr>' },
+      { '<c-k>', '<cmd><C-U>TmuxNavigateUp<cr>' },
+      { '<c-l>', '<cmd><C-U>TmuxNavigateRight<cr>' },
+      { '<c-\\>', '<cmd><C-U>TmuxNavigatePrevious<cr>' },
+    },
   },
 }
